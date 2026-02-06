@@ -95,9 +95,20 @@ label jour10:
                     sarah "Parfait. Le programme est complet."
                     sarah "Il te protégera quelques secondes. Utilise-les bien."
                 "delete_all_files()":
-                    sarah "Non. Ça supprimerait TES fichiers aussi."
+                    sarah "Non. Ça supprimerait TES fichiers aussi. Kane survivrait."
+                    $ sante_mentale -= 5
                 "shutdown_system()":
-                    sarah "Non. Il survivrait au redémarrage."
+                    sarah "Non. Il survivrait au redémarrage. Il est dans le firmware."
+                    $ sante_mentale -= 5
+                "scan_entity('UNKNOWN')":
+                    sarah "Non. Scanner ne suffit pas. Il faut le CIBLER directement."
+                    $ sante_mentale -= 5
+                "isolate_process('UPLOAD')":
+                    sarah "Non. Isoler le processus ne le détruira pas. Il se répliquera."
+                    $ sante_mentale -= 5
+                "purge_memory('ALL')":
+                    sarah "Non. Purger toute la mémoire te détruirait toi aussi."
+                    $ sante_mentale -= 5
         else:
             menu:
                 "target_entity('KANE')":
@@ -106,9 +117,20 @@ label jour10:
                     sarah "Perfect. The program is complete."
                     sarah "It'll protect you for a few seconds. Use them wisely."
                 "delete_all_files()":
-                    sarah "No. That would delete YOUR files too."
+                    sarah "No. That would delete YOUR files too. Kane would survive."
+                    $ sante_mentale -= 5
                 "shutdown_system()":
-                    sarah "No. He'd survive the reboot."
+                    sarah "No. He'd survive the reboot. He's in the firmware."
+                    $ sante_mentale -= 5
+                "scan_entity('UNKNOWN')":
+                    sarah "No. Scanning isn't enough. You need to TARGET him directly."
+                    $ sante_mentale -= 5
+                "isolate_process('UPLOAD')":
+                    sarah "No. Isolating the process won't destroy him. He'll replicate."
+                    $ sante_mentale -= 5
+                "purge_memory('ALL')":
+                    sarah "No. Purging all memory would destroy you too."
+                    $ sante_mentale -= 5
     else:
         scene bg bureau_nuit with dissolve
         if language == "fr":

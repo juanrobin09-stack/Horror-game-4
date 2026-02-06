@@ -41,7 +41,42 @@ init python:
     import time
     
     config.window_title = "CTRL+ALT+DELETE"
-    
+
+    # Callback pour images manquantes — retourne un Solid coloré selon le pattern
+    def missing_image_callback(name):
+        name_str = " ".join(name) if isinstance(name, tuple) else str(name)
+        name_lower = name_str.lower()
+        if "bg" in name_lower:
+            if "rouge" in name_lower or "red" in name_lower:
+                return Solid("#1a0000", xysize=(1920, 1080))
+            elif "code" in name_lower or "ecran" in name_lower:
+                return Solid("#0a0a15", xysize=(1920, 1080))
+            elif "bsod" in name_lower:
+                return Solid("#0078d7", xysize=(1920, 1080))
+            elif "hopital" in name_lower:
+                return Solid("#e8e8e8", xysize=(1920, 1080))
+            else:
+                return Solid("#1a0000", xysize=(1920, 1080))
+        elif "overlay" in name_lower:
+            return Solid("#00000000", xysize=(1920, 1080))
+        elif "jumpscare" in name_lower:
+            return Solid("#ff000088", xysize=(1920, 1080))
+        elif any(x in name_lower for x in ["entite", "kane", "marc", "sarah"]):
+            return Null()
+        return Solid("#1a0000", xysize=(1920, 1080))
+
+    config.missing_image_callback = missing_image_callback
+
+    # Fonction safe_play pour éviter les crashs si un fichier audio manque
+    def safe_play(channel, filename, **kwargs):
+        try:
+            if channel == "music":
+                renpy.music.play(filename, **kwargs)
+            else:
+                renpy.sound.play(filename, **kwargs)
+        except Exception:
+            pass
+
     # Fonction vérification santé mentale
     def check_sante_mentale():
         if store.sante_mentale <= 0:
@@ -338,6 +373,7 @@ image kane colere = "images/kane_colere.png"                # Rage
 image kane glitch = "images/kane_glitch.png"                # Visage qui se désintègre
 image kane fusion = "images/kane_fusion.png"                # Fusion des deux visages (creepy)
 image kane final = "images/kane_final.png"                  # Forme finale terrifiante
+image kane triste = "images/kane_triste.png"                # Kane expression triste
 
 # === PERSONNAGES SECONDAIRES ===
 image marc normal = "images/marc_normal.png"                # Marc, ami sympathique
@@ -467,7 +503,9 @@ transform tremble_violent:
 # Zooms menaçants
 transform zoom_lent:
     zoom 1.0
-    linear 15.0 zoom 1.1
+    linear 15.0 zoom 1.05
+    linear 15.0 zoom 1.0
+    repeat
 
 transform zoom_moyen:
     zoom 1.0
@@ -720,13 +758,6 @@ init python:
     # Jouer un son avec volume
     def play_sfx(sound, volume=1.0):
         renpy.sound.play(sound, volume=volume)
-    
-    # Vérifier si le joueur est en danger mental
-    def check_sante_mentale():
-        if store.sante_mentale <= 0:
-            renpy.jump("fin_folie")
-        elif store.sante_mentale <= 20:
-            renpy.notify("⚠ Santé mentale critique !")
     
     # Diminuer la santé mentale avec vérification
     def perte_sante(montant):
