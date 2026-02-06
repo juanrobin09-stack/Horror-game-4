@@ -1,30 +1,30 @@
-# ═══════════════════════════════════════════════════════════════════════════════
+﻿# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 #                    ACTE 3 : LA BATAILLE / THE BATTLE - VERSION 10/10
-#                         Jours 10-13 - ÉTOFFÉ ET PROFOND
-# ═══════════════════════════════════════════════════════════════════════════════
+#                         Jours 10-13 - Ã‰TOFFÃ‰ ET PROFOND
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 label acte3_debut:
     $ acte = 3
     stop music fadeout 1.0
     scene bg noir with fade
     window hide
-    safe_play(audio.bass_drop, channel="sound", volume=0.5)
+    $ safe_play(audio.bass_drop, channel="sound", volume=0.5)
     
     centered "{size=+50}{color=#ff0040}ACTE III{/color}{/size}"
     pause 1.5
     if language == "fr":
         centered "{size=+20}LA BATAILLE{/size}"
-        centered "{color=#666666}« Tu connais ton ennemi. Maintenant, bats-toi. »{/color}"
+        centered "{color=#666666}Â« Tu connais ton ennemi. Maintenant, bats-toi. Â»{/color}"
     else:
         centered "{size=+20}THE BATTLE{/size}"
-        centered "{color=#666666}« You know your enemy. Now fight. »{/color}"
+        centered "{color=#666666}Â« You know your enemy. Now fight. Â»{/color}"
     pause 2.5
     window show
     jump jour10
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 #                              JOUR 10 : L'ALLIANCE / LA TRAQUE
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 label jour10:
     $ jour = 10
@@ -46,26 +46,26 @@ label jour10:
     pause 2.0
     window show
     
-    safe_play(audio.tension_forte, channel="music", volume=0.4)
+    $ safe_play(audio.tension_forte, channel="music", volume=0.4)
     
     if alliance_sarah:
         scene bg ecran_code with dissolve
         if language == "fr":
-            narrateur "Sarah t'a envoyé un programme. Un pare-feu anti-Kane. Ta seule chance de survie."
+            narrateur "Sarah t'a envoyÃ© un programme. Un pare-feu anti-Kane. Ta seule chance de survie."
             pause 1.0
             sarah "Ce programme peut le ralentir pendant l'upload."
             pause 1.0
-            sarah "Mais pour le DÉTRUIRE, tu as besoin du code."
+            sarah "Mais pour le DÃ‰TRUIRE, tu as besoin du code."
             pause 0.8
             alex "KANE66. Je l'ai."
             pause 1.0
             sarah "Il faut le taper au BON moment."
             pause 1.0
-            sarah "Quand l'écran devient rouge. Quand tu sens la pression dans ta tête."
+            sarah "Quand l'Ã©cran devient rouge. Quand tu sens la pression dans ta tÃªte."
             pause 1.2
-            sarah "C'est là qu'il est vulnérable. C'est ta SEULE chance."
+            sarah "C'est lÃ  qu'il est vulnÃ©rable. C'est ta SEULE chance."
             pause 1.0
-            alex "Et si ça ne marche pas ?"
+            alex "Et si Ã§a ne marche pas ?"
             pause 1.5
             sarah "..."
             pause 1.0
@@ -85,14 +85,14 @@ label jour10:
             sarah "Then you become David Kane."
             sarah "And I'll have to hunt you like I hunted the original."
         
-        # ÉNIGME 5 : Compléter le programme (Refonte avec renpy.input())
+        # Ã‰NIGME 5 : ComplÃ©ter le programme (Refonte avec renpy.input())
         if language == "fr":
             systeme "PROGRAMME ANTI-KANE - INCOMPLET"
             systeme "ligne 1: initialize_protection()"
             systeme "ligne 2: ??? (MANQUANT)"
             systeme "ligne 3: deploy_countermeasure()"
-            sarah "Tu dois compléter la ligne 2."
-            sarah "Quelle fonction cible spécifiquement Kane ?"
+            sarah "Tu dois complÃ©ter la ligne 2."
+            sarah "Quelle fonction cible spÃ©cifiquement Kane ?"
             sarah "Entre le code de la ligne manquante :"
         else:
             systeme "ANTI-KANE PROGRAM - INCOMPLETE"
@@ -103,7 +103,7 @@ label jour10:
             sarah "Which function specifically targets Kane?"
             sarah "Enter the code for the missing line:"
         
-        # Sauvegarde automatique avant énigme
+        # Sauvegarde automatique avant Ã©nigme
         $ sauvegarde_avant_enigme(5)
         
         $ tentatives_enigme5 = 0
@@ -115,7 +115,7 @@ label jour10:
                     menu:
                         "Entrer le code":
                             $ reponse_code = renpy.input("Entre le code de la ligne 2 :", length=30).strip()
-                        "Demander de l'aide (-3 santé mentale)":
+                        "Demander de l'aide (-3 santÃ© mentale)":
                             $ demande_aide_enigme(5)
                             $ reponse_code = renpy.input("Entre le code de la ligne 2 :", length=30).strip()
                 else:
@@ -134,27 +134,27 @@ label jour10:
             $ tentatives_enigme5 += 1
             $ reponse_code = reponse_code.strip()
             
-            # Accepter différentes variantes
+            # Accepter diffÃ©rentes variantes
             if "target_entity" in reponse_code and "KANE" in reponse_code.upper():
                 $ enigme5_resolue = True
                 $ enigmes_resolues += 1
-                safe_play(audio.success, channel="sound", volume=0.5)
+                $ safe_play(audio.success, channel="sound", volume=0.5)
                 if language == "fr":
                     sarah "Parfait. Le programme est complet."
-                    sarah "Il te protégera quelques secondes. Utilise-les bien."
+                    sarah "Il te protÃ©gera quelques secondes. Utilise-les bien."
                 else:
                     sarah "Perfect. The program is complete."
                     sarah "It'll protect you for a few seconds. Use them wisely."
             else:
-                safe_play(audio.error, channel="sound", volume=0.4)
+                $ safe_play(audio.error, channel="sound", volume=0.4)
                 if language == "fr":
                     systeme "CODE INCORRECT"
                     if tentatives_enigme5 == 1:
-                        sarah "Non. Réfléchis : quelle fonction cible une entité spécifique ?"
+                        sarah "Non. RÃ©flÃ©chis : quelle fonction cible une entitÃ© spÃ©cifique ?"
                     elif tentatives_enigme5 == 2:
                         sarah "Encore faux. Indice : la fonction doit cibler 'KANE'."
                     else:
-                        sarah "Dernière chance. La fonction commence par 'target'..."
+                        sarah "DerniÃ¨re chance. La fonction commence par 'target'..."
                     $ sante_mentale -= 5
                 else:
                     systeme "INCORRECT CODE"
@@ -171,27 +171,27 @@ label jour10:
         
         if not enigme5_resolue:
             if language == "fr":
-                safe_play(audio.error, channel="sound", volume=0.5)
-                systeme "TENTATIVES ÉPUISÉES"
+                $ safe_play(audio.error, channel="sound", volume=0.5)
+                systeme "TENTATIVES Ã‰PUISÃ‰ES"
                 sarah "Le programme reste incomplet. Tu auras moins de protection."
                 $ sante_mentale -= 10
             else:
-                safe_play(audio.error, channel="sound", volume=0.5)
+                $ safe_play(audio.error, channel="sound", volume=0.5)
                 systeme "ATTEMPTS EXHAUSTED"
                 sarah "The program remains incomplete. You'll have less protection."
                 $ sante_mentale -= 10
     else:
         scene bg bureau_nuit with dissolve
         if language == "fr":
-            narrateur "Tu es seul. Personne ne peut t'aider. Personne ne te croirait de toute façon."
+            narrateur "Tu es seul. Personne ne peut t'aider. Personne ne te croirait de toute faÃ§on."
             pause 1.0
-            narrateur "Tu passes la journée à préparer ta défense, tes doigts qui tremblent sur le clavier, tes yeux brûlants."
+            narrateur "Tu passes la journÃ©e Ã  prÃ©parer ta dÃ©fense, tes doigts qui tremblent sur le clavier, tes yeux brÃ»lants."
             pause 1.0
             pensee "KANE66... C'est ma seule arme."
             pause 0.8
             pensee "Mais comment l'utiliser ? Quand ?"
             pause 1.0
-            narrateur "Tu n'as pas de réponse. Juste de l'espoir. Et la certitude que tu dois te battre."
+            narrateur "Tu n'as pas de rÃ©ponse. Juste de l'espoir. Et la certitude que tu dois te battre."
         else:
             narrateur "You're alone. No one can help you."
             narrateur "You spend the day preparing your defense."
@@ -199,33 +199,33 @@ label jour10:
             pensee "But how do I use it?"
             narrateur "You have no answer. Just hope."
     
-    safe_play(audio.glitch, channel="sound", volume=0.4)
+    $ safe_play(audio.glitch, channel="sound", volume=0.4)
     scene bg bureau_nuit at glitch_leger
     show kane neutre at centre with dissolve
     
     if language == "fr":
-        kane "Tu prépares quelque chose."
+        kane "Tu prÃ©pares quelque chose."
         pause 1.0
-        kane "Je le sens. Dans chaque ligne de code que tu écris. Dans chaque pensée que tu as."
+        kane "Je le sens. Dans chaque ligne de code que tu Ã©cris. Dans chaque pensÃ©e que tu as."
         pause 1.0
         kane "Tu as peur. Et tu devrais."
         pause 1.0
         if alliance_sarah:
             kane "Cette femme ne peut pas te sauver."
             pause 1.0
-            kane "Elle n'a même pas pu se sauver elle-même. Elle est brisée. Complètement détruite."
+            kane "Elle n'a mÃªme pas pu se sauver elle-mÃªme. Elle est brisÃ©e. ComplÃ¨tement dÃ©truite."
         pause 1.0
         kane "Dans 4 jours, tu seras moi."
         pause 1.0
-        kane "Ton corps. Mes pensées. Ma faim."
+        kane "Ton corps. Mes pensÃ©es. Ma faim."
         pause 1.0
         show kane sourire with dissolve
         pause 0.8
-        kane "J'ai tellement hâte de sentir à nouveau."
+        kane "J'ai tellement hÃ¢te de sentir Ã  nouveau."
         pause 1.0
-        kane "La chaleur du soleil. Le goût de la nourriture."
+        kane "La chaleur du soleil. Le goÃ»t de la nourriture."
         pause 1.0
-        kane "La douleur. Même la douleur me manque."
+        kane "La douleur. MÃªme la douleur me manque."
     else:
         kane "You're planning something."
         kane "I can feel it."
@@ -245,7 +245,7 @@ label jour10:
     scene bg noir with trans_horreur
     
     if language == "fr":
-        narrateur "4 jours. Le compte à rebours a commencé. 96 heures avant que tu ne cesses d'exister."
+        narrateur "4 jours. Le compte Ã  rebours a commencÃ©. 96 heures avant que tu ne cesses d'exister."
         pause 1.0
         narrateur "96 heures pour trouver un moyen de survivre."
         pause 1.0
@@ -256,9 +256,9 @@ label jour10:
     pause 2.0
     jump jour11
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#                              JOUR 11 : LA VÉRITÉ
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+#                              JOUR 11 : LA VÃ‰RITÃ‰
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 label jour11:
     $ jour = 11
@@ -267,14 +267,14 @@ label jour11:
     
     if language == "fr":
         centered "{size=+35}{color=#ff0040}JOUR 11{/color}{/size}"
-        centered "{size=+15}LA VÉRITÉ{/size}"
+        centered "{size=+15}LA VÃ‰RITÃ‰{/size}"
     else:
         centered "{size=+35}{color=#ff0040}DAY 11{/color}{/size}"
         centered "{size=+15}THE TRUTH{/size}"
     pause 2.0
     window show
     
-    safe_play(audio.drone_grave, channel="music", volume=0.4)
+    $ safe_play(audio.drone_grave, channel="music", volume=0.4)
     scene bg bureau_nuit at zoom_lent with dissolve
     show kane neutre at centre with dissolve
     
@@ -285,9 +285,9 @@ label jour11:
         pause 0.8
         alex "Pourquoi ?"
         pause 1.0
-        kane "Parce que dans 3 jours, nous serons la même personne."
+        kane "Parce que dans 3 jours, nous serons la mÃªme personne."
         pause 1.0
-        kane "Tu mérites de savoir qui tu vas devenir. Qui tu étais avant de devenir moi."
+        kane "Tu mÃ©rites de savoir qui tu vas devenir. Qui tu Ã©tais avant de devenir moi."
     else:
         kane "[player_name]. Let's sit and talk."
         kane "Really talk. No threats. No games."
@@ -297,25 +297,25 @@ label jour11:
     
     if language == "fr":
         menu:
-            "Écouter son histoire":
+            "Ã‰couter son histoire":
                 $ connaissance += 15
-                kane "Je n'ai pas toujours été un monstre."
+                kane "Je n'ai pas toujours Ã©tÃ© un monstre."
                 pause 1.0
-                kane "J'étais un enfant. Brillant. Trop brillant."
+                kane "J'Ã©tais un enfant. Brillant. Trop brillant."
                 pause 1.0
-                kane "Les autres enfants me haïssaient. Les adultes avaient peur."
+                kane "Les autres enfants me haÃ¯ssaient. Les adultes avaient peur."
                 pause 1.0
-                kane "Mon père me battait pour 'corriger' mon intelligence."
+                kane "Mon pÃ¨re me battait pour 'corriger' mon intelligence."
                 pause 1.2
                 kane "'T'es pas normal,' il disait. 'T'es une erreur.'"
                 pause 1.5
-                alex "Ça n'excuse pas 6 meurtres."
+                alex "Ã‡a n'excuse pas 6 meurtres."
                 pause 1.0
                 kane "Non. Rien ne les excuse."
                 pause 1.0
-                kane "Mais ça les explique."
+                kane "Mais Ã§a les explique."
                 pause 1.0
-                kane "Chaque victime représentait quelqu'un qui m'avait blessé."
+                kane "Chaque victime reprÃ©sentait quelqu'un qui m'avait blessÃ©."
                 pause 1.0
                 kane "Un professeur. Un employeur. Un amant."
                 pause 1.0
@@ -325,16 +325,16 @@ label jour11:
                 pause 1.5
                 show kane sourire with dissolve
                 pause 0.8
-                kane "Et maintenant, cette douleur va enfin s'arrêter."
+                kane "Et maintenant, cette douleur va enfin s'arrÃªter."
                 pause 1.0
                 kane "Quand j'aurai un nouveau corps. Une nouvelle vie."
                 pause 1.0
                 kane "Quand je serai toi."
-            "Refuser d'écouter":
+            "Refuser d'Ã©couter":
                 alex "Je me fous de ton histoire."
                 show kane colere with dissolve
-                kane "Tu devrais t'y intéresser."
-                kane "Bientôt, ce sera NOTRE histoire."
+                kane "Tu devrais t'y intÃ©resser."
+                kane "BientÃ´t, ce sera NOTRE histoire."
     else:
         menu:
             "Listen to his story":
@@ -364,21 +364,21 @@ label jour11:
     show kane neutre with dissolve
     
     if language == "fr":
-        kane "Dans 3 jours, je prendrai le contrôle."
+        kane "Dans 3 jours, je prendrai le contrÃ´le."
         pause 1.0
         kane "Ton esprit s'effacera. Lentement. Douloureusement."
         pause 1.0
-        kane "Tu sentiras chaque pensée disparaître. Chaque souvenir. Chaque émotion."
+        kane "Tu sentiras chaque pensÃ©e disparaÃ®tre. Chaque souvenir. Chaque Ã©motion."
         pause 1.2
-        kane "Jusqu'à ce qu'il ne reste plus rien de toi."
+        kane "Jusqu'Ã  ce qu'il ne reste plus rien de toi."
         pause 1.5
-        kane "Puis je me lèverai. Dans ton corps. Avec ma faim."
+        kane "Puis je me lÃ¨verai. Dans ton corps. Avec ma faim."
         pause 1.0
         alex "Et si je refuse ? Si je me bats ?"
         pause 1.0
-        kane "J'espère que tu le feras."
+        kane "J'espÃ¨re que tu le feras."
         pause 1.0
-        kane "C'est tellement plus satisfaisant quand ils se débattent."
+        kane "C'est tellement plus satisfaisant quand ils se dÃ©battent."
     else:
         kane "In 3 days, I'll take control."
         kane "Your mind will fade. Slowly. Painfully."
@@ -408,9 +408,9 @@ label jour11:
     pause 2.0
     jump jour12
 
-# ═══════════════════════════════════════════════════════════════════════════════
-#                              JOUR 12 : LA PRÉPARATION
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+#                              JOUR 12 : LA PRÃ‰PARATION
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 label jour12:
     $ jour = 12
@@ -419,19 +419,19 @@ label jour12:
     
     if language == "fr":
         centered "{size=+35}{color=#ff0040}JOUR 12{/color}{/size}"
-        centered "{size=+15}LA PRÉPARATION{/size}"
+        centered "{size=+15}LA PRÃ‰PARATION{/size}"
     else:
         centered "{size=+35}{color=#ff0040}DAY 12{/color}{/size}"
         centered "{size=+15}THE PREPARATION{/size}"
     pause 2.0
     window show
     
-    safe_play(audio.tension_forte, channel="music", volume=0.4)
+    $ safe_play(audio.tension_forte, channel="music", volume=0.4)
     scene bg ecran_code with dissolve
     
     if language == "fr":
-        narrateur "Tu passes la journée à tout préparer."
-        narrateur "À vérifier chaque détail. Chaque variable."
+        narrateur "Tu passes la journÃ©e Ã  tout prÃ©parer."
+        narrateur "Ã€ vÃ©rifier chaque dÃ©tail. Chaque variable."
     else:
         narrateur "You spend the day preparing everything."
         narrateur "Checking every detail. Every variable."
@@ -453,13 +453,13 @@ label jour12:
             sarah "[player_name]. Tu as le code ?"
             alex "KANE66."
             sarah "Bien. Tu sais quand l'utiliser ?"
-            alex "Quand l'écran devient rouge."
+            alex "Quand l'Ã©cran devient rouge."
             sarah "Exactement. Quand tu sens la pression."
-            sarah "Tu auras peut-être 5 secondes. 10 au maximum."
+            sarah "Tu auras peut-Ãªtre 5 secondes. 10 au maximum."
             sarah "Ne les gaspille pas."
-            alex "Et si ça ne marche pas ?"
+            alex "Et si Ã§a ne marche pas ?"
             sarah "..."
-            sarah "Alors dis adieu à qui tu es."
+            sarah "Alors dis adieu Ã  qui tu es."
         else:
             sarah "[player_name]. Do you have the code?"
             alex "KANE66."
@@ -472,19 +472,19 @@ label jour12:
             sarah "..."
             sarah "Then say goodbye to who you are."
     
-    safe_play(audio.glitch, channel="sound", volume=0.4)
+    $ safe_play(audio.glitch, channel="sound", volume=0.4)
     scene bg ecran_code at glitch_leger
     show kane neutre at centre with dissolve
     
     if language == "fr":
-        kane "Tu prépares quelque chose."
-        kane "Mais ça n'a pas à être douloureux, tu sais."
+        kane "Tu prÃ©pares quelque chose."
+        kane "Mais Ã§a n'a pas Ã  Ãªtre douloureux, tu sais."
         kane "Tu pourrais juste... accepter."
         kane "Te laisser glisser. Te fondre en moi."
         kane "Ce serait presque paisible."
         alex "Tu essaies de me manipuler."
-        kane "Bien sûr. C'est ce que je fais."
-        kane "Mais je suis aussi sincère."
+        kane "Bien sÃ»r. C'est ce que je fais."
+        kane "Mais je suis aussi sincÃ¨re."
         kane "Le combat sera douloureux. Pour nous deux."
         kane "L'acceptation serait plus... douce."
     else:
@@ -499,23 +499,23 @@ label jour12:
         kane "The fight will be painful. For both of us."
         kane "Acceptance would be more... gentle."
     
-    # ÉNIGME : Test moral
+    # Ã‰NIGME : Test moral
     if language == "fr":
-        kane "Une dernière question."
+        kane "Une derniÃ¨re question."
         kane "Si tu pouvais tuer quelqu'un pour sauver ta vie..."
         kane "Le ferais-tu ?"
         menu:
             "Oui":
-                kane "Intéressant. Nous sommes plus semblables que tu ne le crois."
+                kane "IntÃ©ressant. Nous sommes plus semblables que tu ne le crois."
                 $ corruption += 10
             "Non":
                 kane "Menteur. Tout le monde le ferait."
-                kane "Tu te mens à toi-même."
-            "Ça dépend de qui":
+                kane "Tu te mens Ã  toi-mÃªme."
+            "Ã‡a dÃ©pend de qui":
                 $ enigmes_resolues += 1
-                kane "Une réponse honnête."
-                kane "Tu es différent des autres."
-                kane "C'est peut-être pour ça que tu vas me surprendre."
+                kane "Une rÃ©ponse honnÃªte."
+                kane "Tu es diffÃ©rent des autres."
+                kane "C'est peut-Ãªtre pour Ã§a que tu vas me surprendre."
     else:
         kane "One last question."
         kane "If you could kill someone to save your life..."
@@ -538,11 +538,11 @@ label jour12:
     scene bg noir with trans_horreur
     
     if language == "fr":
-        narrateur "Demain sera le dernier jour de préparation. Le dernier jour où tu peux encore te préparer."
+        narrateur "Demain sera le dernier jour de prÃ©paration. Le dernier jour oÃ¹ tu peux encore te prÃ©parer."
         pause 1.0
         narrateur "Puis viendra le Jour 14."
         pause 1.0
-        narrateur "Le jour où tout se joue. Le jour où tu te bats pour ta vie. Ou tu acceptes ta mort."
+        narrateur "Le jour oÃ¹ tout se joue. Le jour oÃ¹ tu te bats pour ta vie. Ou tu acceptes ta mort."
         pause 1.0
         centered "{size=+20}FIN DU JOUR 12{/size}"
     else:
@@ -553,9 +553,9 @@ label jour12:
     pause 2.0
     jump jour13
 
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 #                              JOUR 13 : LA VEILLE
-# ═══════════════════════════════════════════════════════════════════════════════
+# â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 label jour13:
     $ jour = 13
@@ -573,17 +573,17 @@ label jour13:
     pause 2.0
     window show
     
-    safe_play(audio.drone_grave, channel="music", volume=0.4)
+    $ safe_play(audio.drone_grave, channel="music", volume=0.4)
     scene bg bureau_aube with dissolve
     
     if language == "fr":
-        narrateur "Vendredi 13. La dernière nuit avant l'upload. La dernière nuit où tu es encore toi."
+        narrateur "Vendredi 13. La derniÃ¨re nuit avant l'upload. La derniÃ¨re nuit oÃ¹ tu es encore toi."
         pause 1.0
         narrateur "Tu n'as pas dormi. Tu ne peux pas. Chaque seconde compte maintenant."
         pause 1.0
-        narrateur "Tu regardes le soleil se lever par la fenêtre, cette lumière dorée qui caresse les murs."
+        narrateur "Tu regardes le soleil se lever par la fenÃªtre, cette lumiÃ¨re dorÃ©e qui caresse les murs."
         pause 1.0
-        pensee "C'est peut-être la dernière fois que je vois ça."
+        pensee "C'est peut-Ãªtre la derniÃ¨re fois que je vois Ã§a."
     else:
         narrateur "Friday the 13th. The last night before the upload."
         narrateur "You haven't slept."
@@ -591,26 +591,26 @@ label jour13:
         pensee "This might be the last time."
     
     if relation_marc > 50:
-        safe_play(audio.phone_ring, channel="sound", volume=0.5)
+        $ safe_play(audio.phone_ring, channel="sound", volume=0.5)
         if language == "fr":
-            narrateur "Ton téléphone sonne. C'est Marc."
-            marc "[player_name] ? Ça va ? Tu m'inquiètes depuis quelques jours."
-            marc "Je sais qu'on s'est engueulés mais... t'es quand même mon pote."
+            narrateur "Ton tÃ©lÃ©phone sonne. C'est Marc."
+            marc "[player_name] ? Ã‡a va ? Tu m'inquiÃ¨tes depuis quelques jours."
+            marc "Je sais qu'on s'est engueulÃ©s mais... t'es quand mÃªme mon pote."
             menu:
                 "Tout lui raconter":
                     alex "Marc... Il se passe quelque chose de grave."
-                    narrateur "Tu lui expliques tout. Les fichiers. L'entité. Kane."
-                    marc "... Tu déconnes là ?"
-                    marc "Mec, ça semble complètement dingue."
-                    alex "Je sais. Mais c'est la vérité."
+                    narrateur "Tu lui expliques tout. Les fichiers. L'entitÃ©. Kane."
+                    marc "... Tu dÃ©connes lÃ  ?"
+                    marc "Mec, Ã§a semble complÃ¨tement dingue."
+                    alex "Je sais. Mais c'est la vÃ©ritÃ©."
                     marc "..."
-                    marc "OK. J'te crois pas vraiment mais... si t'as des problèmes, je suis là."
+                    marc "OK. J'te crois pas vraiment mais... si t'as des problÃ¨mes, je suis lÃ ."
                     alex "Marc, s'il m'arrive quelque chose demain..."
                     alex "Souviens-toi de cette conversation."
                     $ a_prevenu_marc = True
                 "Le rassurer":
-                    alex "Je vais bien. Juste stressé. On se voit bientôt."
-                    marc "OK... Fais gaffe à toi."
+                    alex "Je vais bien. Juste stressÃ©. On se voit bientÃ´t."
+                    marc "OK... Fais gaffe Ã  toi."
         else:
             narrateur "Your phone rings. It's Marc."
             marc "[player_name]? You okay? I've been worried about you."
@@ -631,32 +631,32 @@ label jour13:
                     alex "I'm fine. Just stressed. See you soon."
                     marc "OK... Take care of yourself."
     
-    safe_play(audio.glitch, channel="sound", volume=0.4)
+    $ safe_play(audio.glitch, channel="sound", volume=0.4)
     scene bg bureau_aube at glitch_leger
     show kane glitch at centre with dissolve
     
     if language == "fr":
-        narrateur "Il apparaît. Mais son expression est différente. Plus calme. Presque... humaine."
+        narrateur "Il apparaÃ®t. Mais son expression est diffÃ©rente. Plus calme. Presque... humaine."
         pause 1.0
-        narrateur "Comme si, à la veille de sa victoire, il pouvait enfin se permettre d'être vulnérable."
+        narrateur "Comme si, Ã  la veille de sa victoire, il pouvait enfin se permettre d'Ãªtre vulnÃ©rable."
         pause 1.0
-        kane "C'est notre dernière nuit ensemble."
+        kane "C'est notre derniÃ¨re nuit ensemble."
         pause 1.0
-        kane "Comme deux personnes séparées."
+        kane "Comme deux personnes sÃ©parÃ©es."
         pause 0.8
-        alex "Tu comptes vraiment faire ça."
+        alex "Tu comptes vraiment faire Ã§a."
         pause 1.0
         kane "Je n'ai pas le choix, [player_name]."
         pause 1.0
-        kane "Tu sais ce que c'est, être coincé dans le noir ?"
+        kane "Tu sais ce que c'est, Ãªtre coincÃ© dans le noir ?"
         pause 1.2
-        kane "Sans corps. Sans sensation. Juste des pensées qui tournent en boucle."
+        kane "Sans corps. Sans sensation. Juste des pensÃ©es qui tournent en boucle."
         pause 1.0
         kane "Pendant 5 ans."
         pause 1.0
-        kane "5 ans à regarder le monde sans pouvoir le toucher."
+        kane "5 ans Ã  regarder le monde sans pouvoir le toucher."
         pause 1.0
-        kane "5 ans à entendre des voix sans pouvoir répondre."
+        kane "5 ans Ã  entendre des voix sans pouvoir rÃ©pondre."
         pause 1.0
         kane "5 ans d'enfer."
     else:
@@ -678,25 +678,25 @@ label jour13:
             "Montrer de l'empathie":
                 $ espoir += 10
                 $ connaissance += 10
-                alex "Ça a dû être horrible."
+                alex "Ã‡a a dÃ» Ãªtre horrible."
                 pause 1.5
                 kane "..."
                 pause 1.0
-                kane "Tu es le premier à dire ça."
+                kane "Tu es le premier Ã  dire Ã§a."
                 pause 1.0
-                kane "Le premier à me parler comme à une personne."
+                kane "Le premier Ã  me parler comme Ã  une personne."
                 pause 1.0
-                kane "Pas comme à un monstre."
+                kane "Pas comme Ã  un monstre."
                 pause 1.5
                 show kane neutre with dissolve
                 pause 0.8
-                kane "Ça ne changera pas ce qui va se passer."
+                kane "Ã‡a ne changera pas ce qui va se passer."
                 pause 1.0
                 kane "Mais... merci."
             "Rester ferme":
-                alex "Ça ne justifie pas de prendre ma vie."
+                alex "Ã‡a ne justifie pas de prendre ma vie."
                 kane "Non. Mais la survie n'a pas besoin de justification."
-                kane "Tu ferais pareil à ma place."
+                kane "Tu ferais pareil Ã  ma place."
     else:
         menu:
             "Show empathy":
@@ -715,18 +715,18 @@ label jour13:
                 kane "No. But survival doesn't need justification."
                 kane "You'd do the same in my place."
     
-    # ÉNIGME 7 : Le labyrinthe mental
+    # Ã‰NIGME 7 : Le labyrinthe mental
     show kane neutre with dissolve
     
     if language == "fr":
         kane "Un dernier voyage. Dans mon esprit."
-        kane "Tu veux voir qui j'étais vraiment ?"
+        kane "Tu veux voir qui j'Ã©tais vraiment ?"
     else:
         kane "One last journey. Into my mind."
         kane "Want to see who I really was?"
     
     scene bg noir with trans_glitch
-    safe_play(audio.reverse, channel="sound", volume=0.5)
+    $ safe_play(audio.reverse, channel="sound", volume=0.5)
     
     if language == "fr":
         centered "{color=#ff0040}LABYRINTHE MENTAL{/color}"
@@ -740,23 +740,23 @@ label jour13:
                 $ connaissance += 15
                 narrateur "Tu choisis la tristesse."
                 narrateur "Tu vois ses souvenirs. Son enfance."
-                narrateur "Un petit garçon qui pleure. Un père qui frappe."
-                narrateur "Un adolescent seul. Moqué. Isolé."
-                narrateur "Un adulte brisé. Qui ne sait plus aimer."
-                pensee "Il n'est pas né monstre."
-                pensee "On l'a créé."
+                narrateur "Un petit garÃ§on qui pleure. Un pÃ¨re qui frappe."
+                narrateur "Un adolescent seul. MoquÃ©. IsolÃ©."
+                narrateur "Un adulte brisÃ©. Qui ne sait plus aimer."
+                pensee "Il n'est pas nÃ© monstre."
+                pensee "On l'a crÃ©Ã©."
             "Prendre le chemin ROUGE (rage)":
                 $ sante_mentale -= 20
                 narrateur "Tu choisis la rage."
-                narrateur "Tu vois ses meurtres. Chaque détail."
+                narrateur "Tu vois ses meurtres. Chaque dÃ©tail."
                 narrateur "La peur dans leurs yeux. Le sang. Les cris."
                 narrateur "L'horreur te submerge."
-                pensee "Il est le mal incarné."
+                pensee "Il est le mal incarnÃ©."
             "Prendre le chemin BLANC (vide)":
                 narrateur "Tu choisis le vide."
                 narrateur "Tu ne trouves... rien."
-                narrateur "Juste du silence. Du néant."
-                narrateur "C'est peut-être pire que tout."
+                narrateur "Juste du silence. Du nÃ©ant."
+                narrateur "C'est peut-Ãªtre pire que tout."
     else:
         centered "{color=#ff0040}MENTAL LABYRINTH{/color}"
         pause 1.0
@@ -792,7 +792,7 @@ label jour13:
     
     if language == "fr":
         kane "Demain, tout se termine."
-        kane "D'une façon ou d'une autre."
+        kane "D'une faÃ§on ou d'une autre."
         kane "Que le meilleur gagne, [player_name]."
     else:
         kane "Tomorrow, it all ends."
@@ -804,9 +804,9 @@ label jour13:
     scene bg noir with trans_horreur
     
     if language == "fr":
-        narrateur "Tu passes ta dernière nuit éveillé."
-        narrateur "À regarder le soleil se lever."
-        narrateur "Pour peut-être la dernière fois."
+        narrateur "Tu passes ta derniÃ¨re nuit Ã©veillÃ©."
+        narrateur "Ã€ regarder le soleil se lever."
+        narrateur "Pour peut-Ãªtre la derniÃ¨re fois."
         pause 2.0
         centered "{size=+20}FIN DU JOUR 13{/size}"
         pause 1.5
