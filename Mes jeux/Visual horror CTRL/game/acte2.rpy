@@ -311,6 +311,7 @@ label jour6:
         systeme "192.168.1.45   → PC_[player_name]"
         systeme "192.168.66.6   → ???"
         systeme "192.168.1.12   → Smartphone_[player_name]"
+        systeme "10.0.0.137     → IoT_thermostat"
     else:
         entite "Now, a little exercise."
         entite "You want to know where I come from? Find it."
@@ -320,10 +321,11 @@ label jour6:
         systeme "192.168.1.45   → PC_[player_name]"
         systeme "192.168.66.6   → ???"
         systeme "192.168.1.12   → Smartphone_[player_name]"
-    
+        systeme "10.0.0.137     → IoT_thermostat"
+
     if language == "fr":
         menu:
-            "192.168.66.6 - L'adresse suspecte":
+            "192.168.66.6 - L'adresse inconnue":
                 $ enigme3_resolue = True
                 $ enigmes_resolues += 1
                 $ a_trouve_ip = True
@@ -339,13 +341,23 @@ label jour6:
                 entite "Oublie ce que tu as vu."
                 $ connaissance += 15
             "192.168.1.1 - Le routeur":
-                entite "Non. C'est ton routeur."
-                entite "L'adresse suspecte était 66.6. 666."
-            "Je ne sais pas":
-                entite "192.168.66.6. Le chiffre de la bête."
+                play sound audio.error
+                entite "Non. C'est ton routeur. Tu devrais le savoir."
+                entite "Cherche mieux. L'adresse inconnue..."
+                $ sante_mentale -= 5
+            "192.168.1.12 - Le smartphone":
+                play sound audio.error
+                entite "Non. C'est ton propre téléphone."
+                entite "Tu ne reconnais même pas tes appareils ?"
+                $ sante_mentale -= 5
+            "10.0.0.137 - Le thermostat":
+                play sound audio.error
+                entite "Non. C'est ton thermostat connecté. Inoffensif."
+                entite "L'adresse inconnue est bien plus... évocatrice."
+                $ sante_mentale -= 5
     else:
         menu:
-            "192.168.66.6 - The suspicious address":
+            "192.168.66.6 - The unknown address":
                 $ enigme3_resolue = True
                 $ enigmes_resolues += 1
                 $ a_trouve_ip = True
@@ -361,10 +373,20 @@ label jour6:
                 entite "Forget what you saw."
                 $ connaissance += 15
             "192.168.1.1 - The router":
-                entite "No. That's your router."
-                entite "The suspicious address was 66.6. 666."
-            "I don't know":
-                entite "192.168.66.6. The number of the beast."
+                play sound audio.error
+                entite "No. That's your router. You should know that."
+                entite "Look harder. The unknown address..."
+                $ sante_mentale -= 5
+            "192.168.1.12 - The smartphone":
+                play sound audio.error
+                entite "No. That's your own phone."
+                entite "You don't even recognize your own devices?"
+                $ sante_mentale -= 5
+            "10.0.0.137 - The thermostat":
+                play sound audio.error
+                entite "No. That's your smart thermostat. Harmless."
+                entite "The unknown address is far more... evocative."
+                $ sante_mentale -= 5
     
     hide entite with dissolve
     stop music fadeout 2.0
@@ -712,30 +734,125 @@ label jour8:
     if language == "fr":
         menu:
             "Chercher plus d'infos sur ses victimes":
-                $ enigme4_resolue = True
-                $ enigmes_resolues += 1
-                narrateur "Tu fouilles plus profond."
-                systeme "VICTIMES : Kevin A. | Anna M. | Nathan E. | Elena C. | 66-A | 66-B"
-                pensee "K-A-N-E... et 66..."
-                pensee "KANE66 !"
-                $ a_trouve_code = True
-                $ connaissance += 20
+                jump enigme4_victimes
             "Fermer les fichiers":
-                kane "Tu n'as pas le choix. Tu sais maintenant."
+                jump enigme4_skip
     else:
         menu:
             "Search for more info about his victims":
-                $ enigme4_resolue = True
-                $ enigmes_resolues += 1
-                narrateur "You dig deeper."
-                systeme "VICTIMS: Kevin A. | Anna M. | Nathan E. | Elena C. | 66-A | 66-B"
-                pensee "K-A-N-E... and 66..."
-                pensee "KANE66!"
-                $ a_trouve_code = True
-                $ connaissance += 20
+                jump enigme4_victimes
             "Close the files":
-                kane "You don't have a choice. Now you know."
-    
+                jump enigme4_skip
+
+label enigme4_victimes:
+    if language == "fr":
+        narrateur "Tu fouilles plus profond dans les archives."
+        narrateur "Des dossiers numérotés. Des rapports de police."
+        systeme "══════════════════════════════════════════════"
+        systeme "  DOSSIER 66-A : Kevin Ashworth — Victime 1"
+        systeme "  Ingénieur logiciel, 28 ans"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  DOSSIER 66-B : Anna Martinez — Victime 2"
+        systeme "  Professeure d'université, 35 ans"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  DOSSIER 66-C : Nathan Ellis — Victime 3"
+        systeme "  Journaliste d'investigation, 31 ans"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  DOSSIER 66-D : Elena Chang — Victime 4"
+        systeme "  Psychologue clinicienne, 42 ans"
+        systeme "══════════════════════════════════════════════"
+        pensee "Dossiers 66-A à 66-D... Les initiales des victimes..."
+        pensee "Il y a forcément un code caché là-dedans."
+    else:
+        narrateur "You dig deeper into the archives."
+        narrateur "Numbered files. Police reports."
+        systeme "══════════════════════════════════════════════"
+        systeme "  FILE 66-A: Kevin Ashworth — Victim 1"
+        systeme "  Software engineer, 28 years old"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  FILE 66-B: Anna Martinez — Victim 2"
+        systeme "  University professor, 35 years old"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  FILE 66-C: Nathan Ellis — Victim 3"
+        systeme "  Investigative journalist, 31 years old"
+        systeme "══════════════════════════════════════════════"
+        systeme "══════════════════════════════════════════════"
+        systeme "  FILE 66-D: Elena Chang — Victim 4"
+        systeme "  Clinical psychologist, 42 years old"
+        systeme "══════════════════════════════════════════════"
+        pensee "Files 66-A through 66-D... The victims' initials..."
+        pensee "There has to be a code hidden in there."
+    jump enigme4_input
+
+label enigme4_input:
+    if language == "fr":
+        $ tentative_code = renpy.input("Quel est le code caché dans ces dossiers ?", length=10)
+    else:
+        $ tentative_code = renpy.input("What code is hidden in these files?", length=10)
+    $ tentative_code = tentative_code.strip().upper()
+    if tentative_code == "KANE66":
+        jump enigme4_succes
+    elif tentative_code == "KANE":
+        jump enigme4_indice_nombre
+    elif tentative_code == "66":
+        jump enigme4_indice_lettres
+    else:
+        jump enigme4_echec
+
+label enigme4_succes:
+    $ enigme4_resolue = True
+    $ enigmes_resolues += 1
+    $ a_trouve_code = True
+    $ connaissance += 20
+    play sound audio.success
+    if language == "fr":
+        systeme "CODE IDENTIFIÉ : KANE66"
+        pensee "KANE66 ! Les initiales des victimes forment son nom, et 66 est le numéro des dossiers !"
+        pensee "C'est sa signature. Son code."
+    else:
+        systeme "CODE IDENTIFIED: KANE66"
+        pensee "KANE66! The victims' initials spell his name, and 66 is the file number!"
+        pensee "It's his signature. His code."
+    jump enigme4_suite
+
+label enigme4_indice_nombre:
+    if language == "fr":
+        pensee "KANE... C'est les initiales ! Kevin, Anna, Nathan, Elena !"
+        pensee "Mais il manque quelque chose... Les dossiers étaient tous numérotés 66..."
+    else:
+        pensee "KANE... Those are the initials! Kevin, Anna, Nathan, Elena!"
+        pensee "But something's missing... The files were all numbered 66..."
+    jump enigme4_input
+
+label enigme4_indice_lettres:
+    if language == "fr":
+        pensee "66... C'est le numéro des dossiers ! Mais ça ne suffit pas..."
+        pensee "Il faut regarder les initiales des prénoms des victimes..."
+    else:
+        pensee "66... That's the file number! But it's not enough..."
+        pensee "I need to look at the first letters of the victims' names..."
+    jump enigme4_input
+
+label enigme4_echec:
+    if language == "fr":
+        pensee "Ce n'est pas ça... Concentre-toi sur les initiales et les numéros."
+    else:
+        pensee "That's not it... Focus on the initials and the numbers."
+    jump enigme4_input
+
+label enigme4_skip:
+    if language == "fr":
+        kane "Tu n'as pas le choix. Tu sais maintenant."
+    else:
+        kane "You don't have a choice. Now you know."
+    jump enigme4_suite
+
+label enigme4_suite:
     hide kane with dissolve
     stop music fadeout 2.0
     scene bg noir with trans_horreur

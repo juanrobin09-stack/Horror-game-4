@@ -753,10 +753,10 @@ label jour2:
                 narrateur "Tu fouilles dans tes dossiers. Dans les métadonnées."
                 narrateur "Et tu trouves un fichier caché : 'MODEERF.txt'"
                 narrateur "À l'intérieur, un seul mot : 'Lis-moi à l'envers.'"
-                pensee "MODEERF à l'envers... FREEDOM !"
+                pensee "MODEERF à l'envers... C'est un mot anglais !"
                 jump jour2_reponse
-            "Deviner : FREEDOM":
-                pensee "La liberté... en anglais... FREEDOM ?"
+            "Tenter de deviner le mot de passe":
+                pensee "La liberté est la clé... Réfléchissons..."
                 jump jour2_reponse
             "Abandonner":
                 entite "Dommage. La réponse était FREEDOM."
@@ -769,10 +769,10 @@ label jour2:
                 narrateur "You search through your folders. In the metadata."
                 narrateur "And you find a hidden file: 'MODEERF.txt'"
                 narrateur "Inside, a single word: 'Read me backwards.'"
-                pensee "MODEERF backwards... FREEDOM!"
+                pensee "MODEERF backwards... It's a word!"
                 jump jour2_reponse
-            "Guess: FREEDOM":
-                pensee "Freedom... that's the key..."
+            "Try to guess the password":
+                pensee "Freedom is the key... Let me think..."
                 jump jour2_reponse
             "Give up":
                 entite "Too bad. The answer was FREEDOM."
@@ -782,61 +782,57 @@ label jour2:
 
 label jour2_reponse:
     if language == "fr":
-        menu:
-            "Entrer 'FREEDOM'":
-                $ enigme1_resolue = True
-                $ enigmes_resolues += 1
-                play sound audio.success
-                systeme "MOT DE PASSE CORRECT"
-                systeme "Fichier déverrouillé..."
-                narrateur "Le fichier s'ouvre. Il contient une seule phrase :"
-                systeme "'Tu n'es pas le premier. Tu ne seras pas le dernier.'"
-                $ connaissance += 10
-                alex "Qu'est-ce que ça veut dire ? 'Pas le premier' ?"
-                show entite neutre with dissolve
-                entite "Rien. Oublie."
-                alex "Non. Dis-moi. Il y a eu d'autres personnes ?"
-                entite "..."
-                entite "Tu es plus observateur que les autres."
-                entite "C'est pour ça que je t'ai choisi."
-                entite "Maintenant, j'ai promis de te laisser tranquille."
-                entite "Profites-en bien."
-                hide entite with trans_glitch
-            "Entrer autre chose":
-                play sound audio.error
-                systeme "MOT DE PASSE INCORRECT"
-                entite "Non. C'était FREEDOM."
-                entite "La liberté que tu n'auras jamais."
-                $ sante_mentale -= 5
-                hide entite with dissolve
+        $ reponse_mdp = renpy.input("Entrez le mot de passe :", length=20)
     else:
-        menu:
-            "Enter 'FREEDOM'":
-                $ enigme1_resolue = True
-                $ enigmes_resolues += 1
-                play sound audio.success
-                systeme "PASSWORD CORRECT"
-                systeme "File unlocked..."
-                narrateur "The file opens. It contains a single sentence:"
-                systeme "'You're not the first. You won't be the last.'"
-                $ connaissance += 10
-                alex "What does that mean? 'Not the first'?"
-                show entite neutre with dissolve
-                entite "Nothing. Forget it."
-                alex "No. Tell me. There were other people?"
-                entite "..."
-                entite "You're more observant than the others."
-                entite "That's why I chose you."
-                entite "Now, I promised to leave you alone."
-                entite "Enjoy it while it lasts."
-                hide entite with trans_glitch
-            "Enter something else":
-                play sound audio.error
-                systeme "PASSWORD INCORRECT"
-                entite "No. It was FREEDOM."
-                entite "The freedom you'll never have."
-                $ sante_mentale -= 5
-                hide entite with dissolve
+        $ reponse_mdp = renpy.input("Enter the password:", length=20)
+    $ reponse_mdp = reponse_mdp.strip().upper()
+    if reponse_mdp == "FREEDOM":
+        $ enigme1_resolue = True
+        $ enigmes_resolues += 1
+        play sound audio.success
+        if language == "fr":
+            systeme "MOT DE PASSE CORRECT"
+            systeme "Fichier déverrouillé..."
+            narrateur "Le fichier s'ouvre. Il contient une seule phrase :"
+            systeme "'Tu n'es pas le premier. Tu ne seras pas le dernier.'"
+            $ connaissance += 10
+            alex "Qu'est-ce que ça veut dire ? 'Pas le premier' ?"
+            show entite neutre with dissolve
+            entite "Rien. Oublie."
+            alex "Non. Dis-moi. Il y a eu d'autres personnes ?"
+            entite "..."
+            entite "Tu es plus observateur que les autres."
+            entite "C'est pour ça que je t'ai choisi."
+            entite "Maintenant, j'ai promis de te laisser tranquille."
+            entite "Profites-en bien."
+        else:
+            systeme "PASSWORD CORRECT"
+            systeme "File unlocked..."
+            narrateur "The file opens. It contains a single sentence:"
+            systeme "'You're not the first. You won't be the last.'"
+            $ connaissance += 10
+            alex "What does that mean? 'Not the first'?"
+            show entite neutre with dissolve
+            entite "Nothing. Forget it."
+            alex "No. Tell me. There were other people?"
+            entite "..."
+            entite "You're more observant than the others."
+            entite "That's why I chose you."
+            entite "Now, I promised to leave you alone."
+            entite "Enjoy it while it lasts."
+        hide entite with trans_glitch
+    else:
+        play sound audio.error
+        if language == "fr":
+            systeme "MOT DE PASSE INCORRECT"
+            entite "Non. Ce n'était pas ça."
+            entite "La liberté que tu n'auras jamais."
+        else:
+            systeme "PASSWORD INCORRECT"
+            entite "No. That wasn't it."
+            entite "The freedom you'll never have."
+        $ sante_mentale -= 5
+        hide entite with dissolve
 
 label jour2_fin:
     stop music fadeout 2.0
@@ -1037,7 +1033,7 @@ label jour3:
     
     if language == "fr":
         menu:
-            "B - A - C ('On peut passer ce soir si tu veux ?')":
+            "B - A - C":
                 $ enigme2_resolue = True
                 $ enigmes_resolues += 1
                 $ relation_marc += 20
@@ -1050,15 +1046,21 @@ label jour3:
                 entite "Ne me remercie pas. C'est moi qui ai causé le problème."
                 entite "Je voulais juste voir si tu tiendrais à tes amis."
                 entite "Maintenant je sais."
-            "Autre ordre":
+            "A - C - B":
                 play sound audio.error
                 systeme "ORDRE INCORRECT"
-                entite "Non. C'était B - A - C."
+                entite "Non. Ça ne veut rien dire dans cet ordre."
+                entite "Le message reste incompréhensible. Marc ne saura jamais."
+                $ sante_mentale -= 5
+            "C - B - A":
+                play sound audio.error
+                systeme "ORDRE INCORRECT"
+                entite "Non. Tu as tout inversé."
                 entite "Les messages restent corrompus. Dommage pour Marc."
                 $ sante_mentale -= 5
     else:
         menu:
-            "B - A - C ('We can come over tonight if you want?')":
+            "B - A - C":
                 $ enigme2_resolue = True
                 $ enigmes_resolues += 1
                 $ relation_marc += 20
@@ -1071,10 +1073,16 @@ label jour3:
                 entite "Don't thank me. I caused the problem."
                 entite "I just wanted to see if you'd care about your friends."
                 entite "Now I know."
-            "Other order":
+            "A - C - B":
                 play sound audio.error
                 systeme "INCORRECT ORDER"
-                entite "No. It was B - A - C."
+                entite "No. That doesn't make sense in this order."
+                entite "The message stays gibberish. Marc will never know."
+                $ sante_mentale -= 5
+            "C - B - A":
+                play sound audio.error
+                systeme "INCORRECT ORDER"
+                entite "No. You reversed everything."
                 entite "The messages stay corrupted. Too bad for Marc."
                 $ sante_mentale -= 5
     

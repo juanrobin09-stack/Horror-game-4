@@ -117,28 +117,56 @@ label finale_code:
     scene bg ecran_rouge at glitch_violent
     play sound audio.glitch_long volume 0.6
     systeme "UPLOAD: 50%"
-    
+
     if language == "fr":
-        narrateur "Tu tapes le code. Tes doigts tremblent."
-        narrateur "K - A - N - E - 6 - 6"
-        menu:
-            "Appuyer sur ENTRÉE":
-                $ enigme8_resolue = True
-                $ enigmes_resolues += 1
-            "Hésiter":
-                narrateur "Tu hésites une seconde de trop."
-                jump finale_echec
+        narrateur "L'écran de destruction apparaît. Un curseur clignote."
+        narrateur "Tes doigts tremblent au-dessus du clavier."
+        narrateur "Tu dois taper le code. MAINTENANT."
     else:
-        narrateur "You type the code. Your fingers tremble."
-        narrateur "K - A - N - E - 6 - 6"
-        menu:
-            "Press ENTER":
-                $ enigme8_resolue = True
-                $ enigmes_resolues += 1
-            "Hesitate":
-                narrateur "You hesitate one second too long."
-                jump finale_echec
-    
+        narrateur "The destruction screen appears. A cursor blinks."
+        narrateur "Your fingers tremble above the keyboard."
+        narrateur "You need to type the code. NOW."
+    jump enigme8_essai1
+
+label enigme8_essai1:
+    systeme "UPLOAD: 50%"
+    if language == "fr":
+        $ code_tape = renpy.input("ENTREZ LE CODE DE DESTRUCTION :", length=10)
+    else:
+        $ code_tape = renpy.input("ENTER THE DESTRUCTION CODE:", length=10)
+    $ code_tape = code_tape.strip().upper()
+    if code_tape == "KANE66":
+        $ enigme8_resolue = True
+        $ enigmes_resolues += 1
+        jump enigme8_succes
+    else:
+        jump enigme8_essai2
+
+label enigme8_essai2:
+    play sound audio.error
+    systeme "UPLOAD: 82%"
+    if language == "fr":
+        systeme "CODE INCORRECT — UPLOAD EN ACCÉLÉRATION"
+        narrateur "La pression dans ta tête s'intensifie. Tu sens Kane se rapprocher."
+        kane "Tu ne connais même pas le code ! C'est FINI !"
+        narrateur "Un dernier essai. Vite."
+        $ code_tape = renpy.input("DERNIÈRE TENTATIVE — ENTREZ LE CODE :", length=10)
+    else:
+        systeme "INCORRECT CODE — UPLOAD ACCELERATING"
+        narrateur "The pressure in your head intensifies. You feel Kane getting closer."
+        kane "You don't even know the code! It's OVER!"
+        narrateur "One last try. Hurry."
+        $ code_tape = renpy.input("LAST ATTEMPT — ENTER THE CODE:", length=10)
+    $ code_tape = code_tape.strip().upper()
+    if code_tape == "KANE66":
+        $ enigme8_resolue = True
+        $ enigmes_resolues += 1
+        jump enigme8_succes
+    else:
+        jump enigme8_echec_final
+
+label enigme8_succes:
+    systeme "UPLOAD: 95%"
     play sound audio.electricity volume 0.8
     scene bg blanc with flash_blanc
     
@@ -171,6 +199,19 @@ label finale_code:
         jump fin_redemption
     else:
         jump fin_partielle
+
+label enigme8_echec_final:
+    play sound audio.error
+    systeme "UPLOAD: 95%"
+    if language == "fr":
+        systeme "CODE INCORRECT — ACCÈS VERROUILLÉ"
+        narrateur "Tu as échoué. Le code n'a pas été entré à temps."
+        kane "TROP TARD !"
+    else:
+        systeme "INCORRECT CODE — ACCESS LOCKED"
+        narrateur "You failed. The code wasn't entered in time."
+        kane "TOO LATE!"
+    jump finale_echec
 
 label finale_accepter:
     $ corruption += 50
